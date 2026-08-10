@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Conscientização sobre Cyberbullying | Comunidade Escolar</title>
+    <style>
+        /* ==========================================================================
+           CONFIGURAÇÕES DE ACESSIBILIDADE, CORES E TIPOGRAFIA (TONS DE AZUL)
+           ========================================================================== */
+        :root {
+            /* Paleta de Tons de Azul para Textos e Elementos */
+            --texto-titulo: #0a2540;       /* Azul marinho profundo */
+            --texto-corpo: #123456;        /* Azul escuro de alto contraste */
+            --texto-destaque: #0056b3;     /* Azul médio para títulos de seção */
+            --azul-link: #004085;          /* Azul escuro para links interativos */
+            --fundo-pagina: #f0f4f8;       /* Fundo suave (reduz fadiga na dislexia) */
+            --fundo-card: #ffffff;         /* Fundo dos cartões */
+            --borda-foco: #002752;         /* Borda de foco para navegação por teclado */
+        }
+
+        /* Regras para Dislexia: Fonte sans-serif, espaçamento amplo entre letras/linhas */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+            word-spacing: 0.06em;
+            background-color: var(--fundo-pagina);
+            color: var(--texto-corpo);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Link oculto de acessibilidade para saltar diretamente ao conteúdo */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            background: var(--texto-titulo);
+            color: #ffffff;
+            padding: 12px 18px;
+            z-index: 100;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Foco bem marcado para quem navega usando a tecla TAB */
+        a:focus, button:focus, iframe:focus {
+            outline: 4px solid var(--borda-foco);
+            outline-offset: 3px;
+        }
+
+        header {
+            background-color: #d0e1f9;
+            border-bottom: 4px solid var(--texto-destaque);
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--texto-titulo);
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            color: var(--texto-corpo);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #b3cde0;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--texto-titulo);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover, nav a:focus {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: var(--fundo-card);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.08);
+            border-left: 8px solid var(--texto-destaque);
+        }
+
+        h2 {
+            color: var(--texto-titulo);
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 2px solid #d0e1f9;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--texto-destaque);
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        p, li {
+            color: var(--texto-corpo);
+            font-size: 1.15rem;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--azul-link);
+            font-weight: bold;
+        }
+
+        /* Estilização de Imagens do Google */
+        .grid-imagens {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .card-imagem {
+            text-align: center;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #d0e1f9;
+        }
+
+        .card-imagem img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .legenda-imagem {
+            font-size: 0.95rem;
+            color: var(--texto-destaque);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Estilização dos Vídeos Incorporados do YouTube */
+        .grid-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .container-video {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .container-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Referências superscript */
+        .ref-tag {
+            font-size: 0.85rem;
+            vertical-align: super;
+            font-weight: bold;
+            color: var(--texto-destaque);
+        }
+
+        .secao-referencias {
+            background-color: #e8f1f5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #d0e1f9;
+            color: var(--texto-titulo);
+            margin-top: 40px;
+            font-weight: bold;
+        }
+
+        /* Desativa movimentos para usuários com sensibilidade visual */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header role="banner">
+        <h1>Conscientização e Combate ao Cyberbullying</h1>
+        <p>Portal educativo voltado para o Ensino Fundamental II, Ensino Médio, Técnico e Subsequente</p>
+    </header>
+
+    <nav aria-label="Menu de Navegação Principal">
+        <a href="#conceito">Conceito</a>
+        <a href="#causas">Causas</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#galeria-imagens">Galeria</a>
+        <a href="#videos">Vídeos Educativos</a>
+        <a href="#referencias">Links e Referências</a>
+    </nav>
+
+    <main id="conteudo-principal" tabindex="-1">
+
+        <section id="conceito" aria-labelledby="titulo-conceito">
+            <h2 id="titulo-conceito">1. Conceito de Cyberbullying</h2>
+            <p>
+                O cyberbullying é definido como a prática sistemática e intencional de agressão, humilhação, chantagem ou discriminação realizada por meio de mídias digitais, como redes sociais, aplicativos de mensagens e ambientes virtuais de aprendizagem <a href="#ref-1" class="ref-tag" aria-label="Ver Referência 1">[1]</a>.
+            </p>
+            <p>
+                No ambiente escolar moderno, a prática atinge estudantes desde o Ensino Fundamental II até cursos do Ensino Técnico Subsequente, sendo caracterizada pela rápida proliferação do conteúdo hostil e pela constante exposição da vítima <a href="#ref-2" class="ref-tag" aria-label="Ver Referência 2">[2]</a>.
+            </p>
+        </section>
+
+        <section id="causas" aria-labelledby="titulo-causas">
+            <h2 id="titulo-causas">2. Causas Principais</h2>
+            <p>Em uma comunidade de 1.500 alunos, identificam-se como causadores do cyberbullying os seguintes fatores sociais e tecnológicos:</p>
+            <ul>
+                <li>
+                    <strong>Sensação de Anonimato Digital:</strong> A mediação pelas telas reduz a percepção do sofrimento alheio, fragilizando a empatia nas interações <a href="#ref-2" class="ref-tag" aria-label="Ver Referência 2">[2]</a>.
+                </li>
+                <li>
+                    <strong>Busca por Status Social:</strong> A agressão online é por vezes empregada por adolescentes para marcar posições de poder dentro de grupos de pares <a href="#ref-3" class="ref-tag" aria-label="Ver Referência 3">[3]</a>.
+                </li>
+                <li>
+                    <strong>Falta de Literacia Digital:</strong> A ausência de debates constantes sobre ética na internet faz com que condutas graves sejam banalizadas como "brincadeiras" <a href="#ref-4" class="ref-tag" aria-label="Ver Referência 4">[4]</a>.
+                </li>
+            </ul>
+        </section>
+
+        <section id="solucoes" aria-labelledby="titulo-solucoes">
+            <h2 id="titulo-solucoes">3. Soluções Conscientizadoras</h2>
+            <p>Medidas de prevenção e intervenção propostas para a nossa instituição:</p>
+            <ul>
+                <li>
+                    <strong>Oficinas de Cidadania Digital:</strong> Integração de temáticas de ética e segurança digital no currículo de todas as modalidades da escola <a href="#ref-3" class="ref-tag" aria-label="Ver Referência 3">[3]</a>.
+                </li>
+                <li>
+                    <strong>Mentoria entre Estudantes:</strong> Alunos do Ensino Técnico e Subsequente atuando na mediação de conscientização com as turmas do Ensino Fundamental II <a href="#ref-2" class="ref-tag" aria-label="Ver Referência 2">[2]</a>.
+                </li>
+                <li>
+                    <strong>Canais Anônimos de Acolhimento:</strong> Espaços de escuta segura e atendimento pedagógico/psicológico para o apoio imediato às vítimas <a href="#ref-1" class="ref-tag" aria-label="Ver Referência 1">[1]</a>.
+                </li>
+            </ul>
+        </section>
+
+        <section id="galeria-imagens" aria-labelledby="titulo-galeria">
+            <h2 id="titulo-galeria">4. Galeria de Ilustrações</h2>
+            <p>Abaixo estão dispostas imagens informativas sobre o impacto da tecnologia e do cyberbullying:</p>
+            
+            <div class="grid-imagens">
+                <div class="card-imagem">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/11997034861431923143_0" 
+                         alt="Ilustração de uma estudante segurando um smartphone com expressões de mensagens na tela.">
+                    <div class="legenda-imagem">Imagem 1: O uso diário das telas e a necessidade de empatia digital.</div>
+                </div>
+
+                <div class="card-imagem">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/11997034861431923143_1" 
+                         alt="Desenho mostrando jovens em frente a computadores refletindo sobre interações nas redes digitais.">
+                    <div class="legenda-imagem">Imagem 2: Diálogo sobre respeito no espaço cibernético.</div>
+                </div>
+
+                <div class="card-imagem">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/11997034861431923143_2" 
+                         alt="Representação visual do impacto psicológico das notificações e mensagens virtuais.">
+                    <div class="legenda-imagem">Imagem 3: O alcance contínuo do cyberbullying fora do horário escolar.</div>
+                </div>
+
+                <div class="card-imagem">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/11997034861431923143_3" 
+                         alt="Estudantes em grupo colaborando em projetos digitais de forma segura e ética.">
+                    <div class="legenda-imagem">Imagem 4: A tecnologia como ferramenta de união e aprendizado.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" aria-labelledby="titulo-videos">
+            <h2 id="titulo-videos">5. Vídeos Educativos para Conscientização</h2>
+            <p>Assista aos materiais audiovisuais selecionados para debate nas salas de aula:</p>
+
+            <div class="grid-videos">
+                <div>
+                    <h3>Vídeo 1: Campanha UNICEF Cyberbullying</h3>
+                    <div class="container-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/u9s1_NzIFJY" 
+                                title="Vídeo Campanha UNICEF sobre Cyberbullying" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Vídeo 2: Como Evitar o Assédio Virtual?</h3>
+                    <div class="container-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/M8I-SvrdV0g" 
+                                title="Vídeo Educativo: Como evitar o assédio virtual?" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Vídeo 3: Nova Lei de Cyberbullying (Lei 14.811)</h3>
+                    <div class="container-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/fZ7TyiccPAE" 
+                                title="Explanação sobre a nova Lei de Cyberbullying" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Vídeo 4: Bullying e Cyberbullying na Escola</h3>
+                    <div class="container-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/BdygESQJzEk" 
+                                title="Debate pedagógico sobre o papel da escola no combate ao Cyberbullying" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="referencias" class="secao-referencias" aria-labelledby="titulo-referencias">
+            <h2 id="titulo-referencias">6. Referências e 4 Links Oficiais</h2>
+            <p>Todas as afirmativas deste portal estão respaldadas pelos órgãos e legislações oficiais listados abaixo:</p>
+            
+            <ol>
+                <li id="ref-1">
+                    <strong>[1] Brasil - Lei nº 13.185/2015:</strong> Institui o Programa de Combate à Intimidação Sistemática em âmbito nacional.<br>
+                    <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13185.htm" target="_blank" rel="noopener noreferrer">Acessar o texto oficial da Lei nº 13.185 (Link 1)</a>
+                </li>
+                <li id="ref-2">
+                    <strong>[2] UNICEF Brasil:</strong> Guia oficial "Cyberbullying: O que é e como pará-lo".<br>
+                    <a href="https://www.unicef.org/brazil/cyberbullying-o-que-eh-e-como-para-lo" target="_blank" rel="noopener noreferrer">Acessar o portal do UNICEF Brasil (Link 2)</a>
+                </li>
+                <li id="ref-3">
+                    <strong>[3] SaferNet Brasil:</strong> Centro de orientação e denúncias sobre crimes virtuais e cidadania digital para escolas.<br>
+                    <a href="https://new.safernet.org.br/" target="_blank" rel="noopener noreferrer">Acessar o portal oficial SaferNet Brasil (Link 3)</a>
+                </li>
+                <li id="ref-4">
+                    <strong>[4] Brasil - Lei nº 14.811/2024:</strong> Lei que incluiu o bullying e o cyberbullying no Código Penal Brasileiro.<br>
+                    <a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14811.htm" target="_blank" rel="noopener noreferrer">Acessar o texto oficial da Lei nº 14.811/2024 (Link 4)</a>
+                </li>
+            </ol>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>Projeto de Conscientização Escolar — Garantindo Acessibilidade, Respeito e Segurança Digital</p>
+    </footer>
+
+</body>
+</html>
